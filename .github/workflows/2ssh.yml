@@ -12,5 +12,5 @@ jobs:
     - name: cd mkdir
       run: cd ~
             mkdir R6220
-    - name: SctA2
+    - name: try_SctA2
       uses: P3TERX/debugger-action@master
