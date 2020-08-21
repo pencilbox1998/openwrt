@@ -4,6 +4,9 @@ jobs:
   Ubuntu:
     runs-on: ubuntu-latest
     steps:
+    - name: github
+      run: git clone https://github.com/openwrt/openwrt
+        cd openwrt
     - name: SSH connection to Actions
       uses: P3TERX/debugger-action@master
     - name: cd mkdir
