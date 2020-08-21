@@ -16,3 +16,20 @@ jobs:
         ./scripts/feeds install -a
     - name: ssh-menuconfig
       uses: P3TERX/debugger-action@master
+    - name: Download package
+      run: |
+        cd openwrt && make download -j8
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
+        make download
+    - name: Build
+      run: |
+        cd openwrt
+        make -j$(nproc)
+    - name : Upload artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: OpenWrt
+        path: openwrt/bin
+    - name: ssh-finish
+      uses: P3TERX/debugger-action@master
