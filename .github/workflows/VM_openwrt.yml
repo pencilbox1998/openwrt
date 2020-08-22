@@ -18,6 +18,7 @@ jobs:
         ./scripts/feeds update -a
     - name: Re Upadte feeds
       run: |
+        cd lede
         ./scripts/feeds update -a
         ./scripts/feeds install -a
     - name: menuconfig
