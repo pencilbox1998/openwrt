@@ -1,4 +1,4 @@
-name: Build OpenWrt
+name: Build OpenWrt-x86-64
 on: push
 jobs:
   build:
@@ -13,17 +13,22 @@ jobs:
         git clone https://github.com/coolsnowwolf/lede
         cd lede
         ./scripts/feeds update -a
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
+ #   - name: update feeds 2th
+ #     run: |
+ #       cd lede
+ #       ./scripts/feeds update -a
+ #       ./scripts/feeds install -a
     - name: menuconfig
       uses: P3TERX/debugger-action@main
-    - name: Download package/dl
-      run: |
-        cd lede
-        make download -j8
-        find dl -size -1024c -exec ls -l {} \;
-        find dl -size -1024c -exec rm -f {} \;
-        make download
+#    - name: Download package/dl
+#      run: |
+#        cd openwrt && make download -j8
+#        find dl -size -1024c -exec ls -l {} \;
+#        find dl -size -1024c -exec rm -f {} \;
+#    - name: re download pkg/dl
+#      run: |
+#        cd lede
+#        make download -j8
     - name: Build
       run: |
         cd lede
